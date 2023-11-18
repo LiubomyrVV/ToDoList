@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import './scrollBarNone.css';
+@import './variables.scss';
+@import './medias.scss';
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: white; 
+    background: $backgroundGradient;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 55%;
+   
+    padding: 30px;
+    border: 4px solid $secondaryColor;
+    border-radius: 14px;
+
+    
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+
+.link-to {
+    margin-left: auto;
+    font-size: 1.2rem;
+    transition: 0.1s;
+    
+   
+    &:hover {
+        cursor: pointer;
+        font-size: 1.4rem;
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+
+}
+
+.todo__logo {
+    margin-left: 16px;
+    font-size: 1.8rem;
+}
+
+.create-task {
+    display: flex;
+    position: relative;
+    width: 70%;
+    margin-bottom: 10px;
+   
+    input {
+        width: 100%;
+        padding: 6px 14px;
+        border: $secondaryColor 4px solid;
+        border-radius: 20px;
+        font-size: $primaryFontSize;
+        color: $primaryColor;
+        background: transparent;
+        &:focus {
+            outline: none;
+            
+        }
+    }
+    button {
+        position:  absolute;
+        right: 1px;
+        padding: 5px 10px;
+
+        height: 100%;
+
+        border: none;
+        border-radius: 20px;
+
+        color: rgb(117, 31, 118);
+        background: $secondaryColor;
+        transition: .3s;
+        &:hover {
+            background: $hoverBtnColor;
+            color: $hoverColor;
+            cursor: pointer;
+            
+            padding: 0px 16px;
+        }
+        &:active {
+            background: $activeBtnColor;    
+            transition: 0.1s;
+        }
+        &::first-line {
+            font-size: cul($primaryFontSize - 2px);
+            letter-spacing: 1.4px;
+        }
+        
+    }
+}
+.list {
+    flex-grow: 1;
+    border: 4px solid $secondaryColor;
+    border-radius: 14px;
+
+    padding: 10px;
+    overflow: auto; 
+     
+}
+
+.task {
+    display: flex;
+    align-items: center;
+}
+.task__checkbox {
+    position: relative;
+    appearance: none;
+    margin-right: 8px;
+    width: $checkboxWidth;
+    height: $checkboxWidth;
+    border: 2px solid $primaryColor;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+
+  .task__checkbox:checked {
+    background-color: transparent;
+    border-color:  transparent;
+    width: $checkboxWidth;
+    height: $checkboxWidth;
+  }
+
+ 
+  .task__checkbox::after {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  
+  .task__checkbox:checked::after {
+    opacity: 1;
+  }
+.task__delete {
+    margin-left: auto;
+    &:hover {
+        cursor: pointer;
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+}
+
+.completed {
+    text-decoration: line-through
+}
+
+.history-buttons {
+    display: flex;
+    margin-bottom: 14px;
+    justify-content: space-around;
+    
+    .completed-btn {
+        padding: 6px 20px;
+        background-color: $secondaryColor;
+        color: $primaryColor;
+
+        border: none;
+        border-radius: 14px;
+
+        font-size: $primaryFontSize;
+        letter-spacing: 2px;
+       
+
+        
+
+        &:hover {
+            cursor: pointer;
+            background-color: $hoverBtnColor;
+            color: $hoverColor;
+           
+        }
+        &:active {
+            transition: 0.1s;
+            cursor: pointer;
+            background-color: $activeBtnColor;
+            transform: scaleX(0.99);
+        }
+    }
+    
+   
+    .uncompleted-btn {
+        padding: 6px 20px;
+        background-color: $secondaryColor;
+        color: $primaryColor;
+
+        border: none;
+        border-radius: 14px;
+
+        font-size: $primaryFontSize;
+        letter-spacing: 2px;
+       
+
+        
+
+        &:hover {
+            cursor: pointer;
+            background-color: $hoverBtnColor;
+            color: $hoverColor;
+           
+        }
+        &:active {
+            transition: 0.1s;
+            cursor: pointer;
+            background-color: $activeBtnColor;
+            transform: scaleX(0.99);
+        }
+    }
+}
+
+@include medias;
